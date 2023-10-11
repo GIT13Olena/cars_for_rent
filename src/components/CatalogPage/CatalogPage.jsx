@@ -6,7 +6,7 @@ import cssModal from './Modal.module.css'
 
 function CatalogPage() {
   const [data, setData] = useState([]);
-  const [loadMore, setLoadMore] = useState(true);
+  const [hasMoreData, setHasMoreData] = useState(true);
   const [displayCount, setDisplayCount] = useState(8); 
 
   const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
@@ -34,7 +34,12 @@ function CatalogPage() {
   }, []);
 
   const handleLoadMore = () => {
-    setDisplayCount(displayCount + 8);
+    // Перевірка, чи є ще дані для завантаження
+    if (displayCount + 8 < (filteredData.length > 0 ? filteredData.length : data.length)) {
+      setDisplayCount(displayCount + 8);
+    } else {
+      setHasMoreData(false);
+    }
   };
 
   const openModalInfoCar = () => {
@@ -221,9 +226,9 @@ function CatalogPage() {
         </div>
 
 
-        {loadMore && (
-          <p onClick={handleLoadMore} className={css.loadMore}>Load more</p>
-        )}
+        {hasMoreData && (
+  <p onClick={handleLoadMore} className={css.loadMore}>Load more</p>
+)}
 
 
       {isModalInfoCarOpen && (
