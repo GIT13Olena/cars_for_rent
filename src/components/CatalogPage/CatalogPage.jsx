@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import heartSvg from '../../icons/normalHeart.svg'
+import activeHeartSvg from '../../icons/activeHeart.svg'
+
+
 import css from './CatalogPage.module.css';
 import cssModal from './Modal.module.css'
 
@@ -10,6 +14,8 @@ function CatalogPage() {
   const [displayCount, setDisplayCount] = useState(8); 
 
   const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
+
+  const [heartImages, setHeartImages] = useState({});
   
   const [filters, setFilters] = useState({
     brand: '',
@@ -69,6 +75,14 @@ function CatalogPage() {
     setFilters({
       ...filters,
       [name]: value,
+    });
+  };
+
+  const toggleHeart = (index) => {
+    setHeartImages((prevImages) => {
+      const newImages = { ...prevImages };
+      newImages[index] = prevImages[index] === activeHeartSvg ? heartSvg : activeHeartSvg;
+      return newImages;
     });
   };
 
@@ -208,37 +222,46 @@ function CatalogPage() {
 
 
       <div className={css.advertisementList}>
-      {(filteredData.length > 0 ? filteredData : data).slice(0, displayCount).map((item) => (
+      {(filteredData.length > 0 ? filteredData : data).slice(0, displayCount).map((item, index) => (
+        <div key={item.id} className="advertisement">
           
-            <div key={item.id} className="advertisement"> 
-            <img src={item.img} alt="car" className={css.imgCars} />
-              <div className={css.infoCar}>
-                  <div className={css.blockModalAndPrice}> 
-                    <h2 className={css.h2NameModalCars}>{item.make}<span className={css.nameModal}>{item.model}</span>, {item.year}</h2>
-                    <h2 className={css.h2NameModalCars}>{item.rentalPrice}</h2>
-                  </div>
-                  <p className={css.blockInfo}>{item.address.split(',').slice(-2).join(' | ')} | {item.rentalCompany}</p>
-                  <p className={css.blockInfo}>{item.type} | {item.model} | {item.id} | {item.functionalities[0]}</p>
-              </div>
-              <button onClick={openModalInfoCar} className={css.LearnMore} >Learn more</button>
-            </div>
+           <div className={css.imageContainer}>
+             <img
+              src={heartImages[index] === activeHeartSvg ? activeHeartSvg : heartSvg}
+              alt="heart"
+              className={css.heartIcon}
+              onClick={() => toggleHeart(index)}
+             />
+             <img src={item.img} alt="car" className={css.imgCars} />
+           </div>
+            
+           <div className={css.infoCar}>
+               <div className={css.blockModalAndPrice}> 
+                 <h2 className={css.h2NameModalCars}>{item.make}<span className={css.nameModal}>{item.model}</span>, {item.year}</h2>
+                 <h2 className={css.h2NameModalCars}>{item.rentalPrice}</h2>
+               </div>
+               <p className={css.blockInfo}>{item.address.split(',').slice(-2).join(' | ')} | {item.rentalCompany}</p>
+               <p className={css.blockInfo}>{item.type} | {item.model} | {item.id} | {item.functionalities[0]}</p>
+           </div>
+
+           <button onClick={openModalInfoCar} className={css.LearnMore} >Learn more</button>
+            
+         </div>
           ))}
         </div>
 
 
         {hasMoreData && (
-  <p onClick={handleLoadMore} className={css.loadMore}>Load more</p>
-)}
+          <p onClick={handleLoadMore} className={css.loadMore}>Load more</p>
+        )}
 
 
       {isModalInfoCarOpen && (
         <div className={cssModal.modalOverly} onClick={handleOverlyClick}>
-              
-                <div className={cssModal.modalContent}>
-                  <button onClick={closeModalInfoCar} className={cssModal.closeModalBtn}>&#10006;</button> 
-                
-              </div>
-            </div>
+         <div className={cssModal.modalContent}>
+           <button onClick={closeModalInfoCar} className={cssModal.closeModalBtn}>&#10006;</button> 
+         </div>
+        </div>
       )}
     </>
   );

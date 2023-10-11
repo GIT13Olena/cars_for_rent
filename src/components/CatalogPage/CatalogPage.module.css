@@ -80,6 +80,20 @@
    margin-top: 50px;
 }
 
+.imageContainer {
+   position: relative;
+   display: inline-block;
+ }
+ 
+ .heartIcon {
+   position: absolute;
+   top: 16px;
+   right: 16px;
+   width: 18px; 
+   height: 18px; 
+   z-index: 1; 
+}
+
 .imgCars{
    width: 274px;
    height: 268px;
