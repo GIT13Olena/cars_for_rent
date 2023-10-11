@@ -12,7 +12,6 @@
    background-color: #fff;
    width: 541px;
    height: 752px;
-   padding: 20px;
    margin: 100px auto;
    text-align: center;
    position: relative; 
@@ -31,7 +30,155 @@
    color: #333;
  }
  
- .img-cars{
-   width: 469px;
-height: 314px;
- }
+.img-cars{
+  width: 469px;
+  height: 314px;
+}
+
+.imgCars{
+  width: 461px;
+  height: 248px;
+  border-radius: 14px;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+.blockInfoCar{
+  display: flex;
+  width: 461px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-left: 40px;
+}
+
+.nameCarAndInfo{
+  display: flex;
+  width: 277px;
+  height: 72px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.h2NameModalCars{
+  color: #121417;
+  font-family: Manrope;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 0px;
+}
+
+.nameModal{
+  color: #3470FF;
+  font-family: Manrope;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.blockInfo{
+  color: rgba(18, 20, 23, 0.50);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: start;
+}
+
+.description{
+  color: #121417;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  width: 461px;
+  text-align: start;
+  margin-bottom: 24px;
+}
+
+.blockAccessoriesInfo{
+  display: flex;
+  width: 461px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-left: 40px;
+  margin-bottom: 24px;
+}
+
+.accessories{
+  text-align: start;
+  color: #121417;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.allBlockReantalConditions{
+  display: flex;
+  width: 461px;
+  height: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 40px;
+  margin-bottom: 24px;
+}
+
+.rentalConditions{
+  color: #121417;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px; 
+}
+
+.blockRentalConditions{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 8px;
+  width: 461px;
+  height: 72px;
+  
+}
+
+.textInfoRental{
+  color: #363535;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+  padding: 7px 14px;
+  border-radius: 35px;
+  background: #F9F9F9;
+}
+
+.infoIteam{
+  color: #3470FF;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+}
+
+.buttonRenalCar{
+  color: var(--White, #FFF);
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 12px 50px;
+  border-radius: 12px;
+  background: #3470FF;
+  border-color: transparent;
+  position: absolute;
+  left: 40px;
+}
+

@@ -16,6 +16,8 @@ function CatalogPage() {
   const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
 
   const [heartImages, setHeartImages] = useState({});
+
+  const [selectedCar, setSelectedCar] = useState(null);
   
   const [filters, setFilters] = useState({
     brand: '',
@@ -40,7 +42,6 @@ function CatalogPage() {
   }, []);
 
   const handleLoadMore = () => {
-    // Перевірка, чи є ще дані для завантаження
     if (displayCount + 8 < (filteredData.length > 0 ? filteredData.length : data.length)) {
       setDisplayCount(displayCount + 8);
     } else {
@@ -48,7 +49,8 @@ function CatalogPage() {
     }
   };
 
-  const openModalInfoCar = () => {
+  const openModalInfoCar = (item) => {
+    setSelectedCar(item);
     setIsModalInfoCarOpen(true);
   }
 
@@ -90,21 +92,18 @@ function CatalogPage() {
     e.preventDefault();
     let filteredCars = [...data];
 
-    // Фільтр за брендом
     if (filters.brand) {
       filteredCars = filteredCars.filter(
         (car) => car.make.toLowerCase() === filters.brand.toLowerCase()
       );
     }
 
-    // Фільтр за ціною
     if (filters.price) {
       filteredCars = filteredCars.filter(
         (car) => car.rentalPrice.toLowerCase() === filters.price.toLowerCase()
       );
     }
 
-    // Фільтр за пробігом
     if (filters.mileage && filters.km) {
       const fromMileage = Number(filters.mileage);
       const toMileage = Number(filters.km);
@@ -244,7 +243,7 @@ function CatalogPage() {
                <p className={css.blockInfo}>{item.type} | {item.model} | {item.id} | {item.functionalities[0]}</p>
            </div>
 
-           <button onClick={openModalInfoCar} className={css.LearnMore} >Learn more</button>
+           <button onClick={() => openModalInfoCar(item)} className={css.LearnMore}>Learn more</button>
             
          </div>
           ))}
@@ -256,10 +255,46 @@ function CatalogPage() {
         )}
 
 
-      {isModalInfoCarOpen && (
+      {isModalInfoCarOpen && selectedCar && (
+
         <div className={cssModal.modalOverly} onClick={handleOverlyClick}>
-         <div className={cssModal.modalContent}>
+
+          <div className={cssModal.modalContent}>
            <button onClick={closeModalInfoCar} className={cssModal.closeModalBtn}>&#10006;</button> 
+           <img src={selectedCar.img} alt="car" className={cssModal.imgCars} />
+          <div className={cssModal.blockInfoCar}>
+
+          <div className={cssModal.nameCarAndInfo}>
+            <h2 className={cssModal.h2NameModalCars}>{selectedCar.make} <span className={cssModal.nameModal}>{selectedCar.model}</span>, {selectedCar.year}</h2>
+            <p className={cssModal.blockInfo}>{selectedCar.address.split(',').slice(-2).join(' | ')} | Id: {selectedCar.id} | Year: {selectedCar.year} | Type: {selectedCar.type} </p>
+            <p className={cssModal.blockInfo}>Fuel Consumption: {selectedCar.fuelConsumption} | Engine Size: {selectedCar.engineSize}</p>
+          </div>
+         
+           <p className={cssModal.description}>{selectedCar.description}</p>
+          </div>
+
+          <div className={cssModal.blockAccessoriesInfo}>
+           <p className={cssModal.accessories}>Accessories and functionalities:</p>
+           <p className={cssModal.blockInfo}>{selectedCar.accessories[0]} | {selectedCar.accessories[1]} | {selectedCar.accessories[2]}</p>
+           <p className={cssModal.blockInfo}>{selectedCar.functionalities[0]} | {selectedCar.functionalities[1]} | {selectedCar.functionalities[2]}</p>
+          </div>
+           
+           <div className={cssModal.allBlockReantalConditions}>
+             <p className={cssModal.rentalConditions}>Rental Conditions: </p>
+
+             <div className={cssModal.blockRentalConditions}>
+               {selectedCar.rentalConditions.split('\n').map((item, index) => (
+               <p key={index} className={cssModal.textInfoRental}>{item} </p>
+                ))
+               }
+               <p className={cssModal.textInfoRental}>Mileage: <span className={cssModal.infoIteam}>{selectedCar.mileage}</span></p>
+               <p className={cssModal.textInfoRental}>Price: <span className={cssModal.infoIteam}>{selectedCar.rentalPrice}</span></p>
+             </div>
+
+           </div>
+           
+            <a href="tel:+380730000000"><button className={cssModal.buttonRenalCar}>Rental car</button></a>
+            
          </div>
         </div>
       )}
