@@ -9,30 +9,31 @@ import css from './CatalogPage.module.css';
 import cssModal from './Modal.module.css'
 
 function CatalogPage() {
-  const [data, setData] = useState([]);
-  const [hasMoreData, setHasMoreData] = useState(true);
-  const [displayCount, setDisplayCount] = useState(8); 
-
-  const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
-
-  const [heartImages, setHeartImages] = useState({});
-
-  const [selectedCar, setSelectedCar] = useState(null);
-  
-  const [filters, setFilters] = useState({
+  const initialFilters = JSON.parse(localStorage.getItem('filters')) || {
     brand: '',
     price: '',
     mileage: '',
     km: '',
-  });
+  };
 
-  const [filteredData, setFilteredData] = useState([]);
+  const initialFavoriteCars = JSON.parse(localStorage.getItem('favoriteCars')) || [];
+  const [favoriteCars, setFavoriteCars] = useState(initialFavoriteCars);
+
+  const [data, setData] = useState(JSON.parse(localStorage.getItem('data')) || []);
+  const [hasMoreData, setHasMoreData] = useState(true);
+  const [displayCount, setDisplayCount] = useState(8);
+  const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
+  const [heartImages, setHeartImages] = useState(JSON.parse(localStorage.getItem('heartImages')) || {});
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [filters, setFilters] = useState(initialFilters);
+  const [filteredData, setFilteredData] = useState(JSON.parse(localStorage.getItem('filteredData')) || []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://65216903a4199548356d2c72.mockapi.io/cars');
         setData(response.data);
+        localStorage.setItem('data', JSON.stringify(response.data));
       } catch (error) {
         console.error('Помилка при отриманні даних з API:', error);
       }
@@ -41,6 +42,21 @@ function CatalogPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Збереження даних у локальне сховище при зміні фільтрів
+    localStorage.setItem('filters', JSON.stringify(filters));
+  }, [filters]);
+
+  useEffect(() => {
+    // Збереження результатів фільтрації у локальне сховище
+    localStorage.setItem('filteredData', JSON.stringify(filteredData));
+  }, [filteredData]);
+
+  useEffect(() => {
+    // Збереження стану сердець у локальне сховище
+    localStorage.setItem('heartImages', JSON.stringify(heartImages));
+  }, [heartImages]);
+
   const handleLoadMore = () => {
     if (displayCount + 8 < (filteredData.length > 0 ? filteredData.length : data.length)) {
       setDisplayCount(displayCount + 8);
@@ -48,6 +64,19 @@ function CatalogPage() {
       setHasMoreData(false);
     }
   };
+
+  const handleFavoriteClick = (car) => {
+    // Отримання поточного списку улюблених автомобілів
+    const currentFavorites = JSON.parse(localStorage.getItem('favoriteCars')) || [];
+  
+    // Додавання нового автомобіля до списку
+    currentFavorites.push(car);
+
+    localStorage.setItem(favoriteCars, JSON.stringify(currentFavorites));
+
+  // Оновлення стану
+  setFavoriteCars(currentFavorites);
+};
 
   const openModalInfoCar = (item) => {
     setSelectedCar(item);
@@ -225,12 +254,15 @@ function CatalogPage() {
         <div key={item.id} className="advertisement">
           
            <div className={css.imageContainer}>
-             <img
-              src={heartImages[index] === activeHeartSvg ? activeHeartSvg : heartSvg}
-              alt="heart"
-              className={css.heartIcon}
-              onClick={() => toggleHeart(index)}
-             />
+           <img
+      src={heartImages[index] === activeHeartSvg ? activeHeartSvg : heartSvg}
+      alt="heart"
+      className={css.heartIcon}
+      onClick={() => {
+        toggleHeart(index);
+        handleFavoriteClick(item);
+      }}
+    />
              <img src={item.img} alt="car" className={css.imgCars} />
            </div>
             
