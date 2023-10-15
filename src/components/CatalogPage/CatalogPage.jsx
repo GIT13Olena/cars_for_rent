@@ -4,21 +4,23 @@ import axios from 'axios';
 import heartSvg from '../../icons/normalHeart.svg'
 import activeHeartSvg from '../../icons/activeHeart.svg'
 
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorites, removeFromFavorites, setFavorites } from '../../redux/actions/favoritesActions';
 
 import css from './CatalogPage.module.css';
 import cssModal from './Modal.module.css'
 
 function CatalogPage() {
+  const dispatch = useDispatch();
+  const favoriteCars = useSelector(state => state.favorites.favoriteCars);
+
   const initialFilters = JSON.parse(localStorage.getItem('filters')) || {
     brand: '',
     price: '',
     mileage: '',
     km: '',
   };
-
-  const initialFavoriteCars = JSON.parse(localStorage.getItem('favoriteCars')) || [];
-  const [favoriteCars, setFavoriteCars] = useState(initialFavoriteCars);
-
+  
   const [data, setData] = useState(JSON.parse(localStorage.getItem('data')) || []);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [displayCount, setDisplayCount] = useState(8);
@@ -43,19 +45,21 @@ function CatalogPage() {
   }, []);
 
   useEffect(() => {
-    // Збереження даних у локальне сховище при зміні фільтрів
     localStorage.setItem('filters', JSON.stringify(filters));
   }, [filters]);
 
   useEffect(() => {
-    // Збереження результатів фільтрації у локальне сховище
     localStorage.setItem('filteredData', JSON.stringify(filteredData));
   }, [filteredData]);
 
   useEffect(() => {
-    // Збереження стану сердець у локальне сховище
     localStorage.setItem('heartImages', JSON.stringify(heartImages));
   }, [heartImages]);
+
+  useEffect(() => {
+    const initialFavorites = JSON.parse(localStorage.getItem('favoriteCars')) || [];
+    dispatch(setFavorites(initialFavorites)); 
+  }, [dispatch]);
 
   const handleLoadMore = () => {
     if (displayCount + 8 < (filteredData.length > 0 ? filteredData.length : data.length)) {
@@ -66,17 +70,12 @@ function CatalogPage() {
   };
 
   const handleFavoriteClick = (car) => {
-    // Отримання поточного списку улюблених автомобілів
-    const currentFavorites = JSON.parse(localStorage.getItem('favoriteCars')) || [];
-  
-    // Додавання нового автомобіля до списку
-    currentFavorites.push(car);
-
-    localStorage.setItem(favoriteCars, JSON.stringify(currentFavorites));
-
-  // Оновлення стану
-  setFavoriteCars(currentFavorites);
-};
+    if (favoriteCars.some((favoriteCar) => favoriteCar.id === car.id)) {
+      dispatch(removeFromFavorites(car));
+    } else {
+      dispatch(addToFavorites(car));
+    }
+  }
 
   const openModalInfoCar = (item) => {
     setSelectedCar(item);
@@ -255,14 +254,14 @@ function CatalogPage() {
           
            <div className={css.imageContainer}>
            <img
-      src={heartImages[index] === activeHeartSvg ? activeHeartSvg : heartSvg}
-      alt="heart"
-      className={css.heartIcon}
-      onClick={() => {
-        toggleHeart(index);
-        handleFavoriteClick(item);
-      }}
-    />
+                src={heartImages[index] === activeHeartSvg ? activeHeartSvg : heartSvg}
+                alt="heart"
+                className={css.heartIcon}
+                onClick={() => {
+                  toggleHeart(index);
+                  handleFavoriteClick(item);
+                }}
+              />
              <img src={item.img} alt="car" className={css.imgCars} />
            </div>
             
@@ -272,7 +271,10 @@ function CatalogPage() {
                  <h2 className={css.h2NameModalCars}>{item.rentalPrice}</h2>
                </div>
                <p className={css.blockInfo}>{item.address.split(',').slice(-2).join(' | ')} | {item.rentalCompany}</p>
-               <p className={css.blockInfo}>{item.type} | {item.model} | {item.id} | {item.functionalities[0]}</p>
+               <p className={css.blockInfo}>
+                {item.type} | {item.model} | {item.id} | {item.functionalities[0].split(' ').slice(0, 2).join(' ')}
+                {item.functionalities[0].split(' ').length > 2 ? '...' : ''}
+                </p>
            </div>
 
            <button onClick={() => openModalInfoCar(item)} className={css.LearnMore}>Learn more</button>
