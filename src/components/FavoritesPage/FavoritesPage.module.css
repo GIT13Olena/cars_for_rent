@@ -79,4 +79,9 @@ li{
    border-radius: 12px;
    background: #3470FF;
    border-color: transparent;
+   cursor: pointer;
+}
+
+.LearnMore:hover{
+   background: #0B44CD;
 }
