@@ -272,8 +272,8 @@ function CatalogPage() {
                </div>
                <p className={css.blockInfo}>{item.address.split(',').slice(-2).join(' | ')} | {item.rentalCompany}</p>
                <p className={css.blockInfo}>
-                {item.type} | {item.model} | {item.id} | {item.functionalities[0].split(' ').slice(0, 2).join(' ')}
-                {item.functionalities[0].split(' ').length > 2 ? '...' : ''}
+                {item.type} | {item.model} | {item.id} | {item.functionalities[0].split(' ').slice(0, 1).join(' ')}
+                {item.functionalities[0].split(' ').length > 1 ? '...' : ''}
                 </p>
            </div>
 

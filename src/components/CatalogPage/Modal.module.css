@@ -63,7 +63,7 @@
 
 .h2NameModalCars{
   color: #121417;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -72,7 +72,7 @@
 
 .nameModal{
   color: #3470FF;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -80,7 +80,7 @@
 
 .blockInfo{
   color: rgba(18, 20, 23, 0.50);
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
@@ -89,7 +89,7 @@
 
 .description{
   color: #121417;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -111,7 +111,7 @@
 .accessories{
   text-align: start;
   color: #121417;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -131,7 +131,7 @@
 
 .rentalConditions{
   color: #121417;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px; 
@@ -170,7 +170,7 @@
 
 .buttonRenalCar{
   color: var(--White, #FFF);
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;

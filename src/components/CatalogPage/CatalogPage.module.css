@@ -28,7 +28,7 @@
 
 .blockSelectMarkName{
    color: #8A8A89;
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 14px;
    font-weight: 500;
    line-height: 18px;
@@ -36,7 +36,7 @@
 
 .buttomSearch{
    color: var(--White, #FFF);
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 14px;
    font-weight: 600;
    line-height: 20px;
@@ -113,7 +113,7 @@
 .h2NameModalCars{
    display: flex;
    color: #121417;
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 16px;
    font-weight: 500;
    line-height: 24px;
@@ -123,7 +123,7 @@
 
 .blockInfo{
    color: rgba(18, 20, 23, 0.50);
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 12px;
    font-weight: 400;
    line-height: 18px;
@@ -131,7 +131,7 @@
 
 .nameModal{
    color: #3470FF;
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 16px;
    font-weight: 500;
    line-height: 24px;
@@ -153,13 +153,13 @@ p{
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 274px;
+   width: 279px;
    height: 44px;
    padding: 12px 99px;
    margin-top: 28px;
    margin-bottom: 50px;
    color: var(--White, #FFF);
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 14px;
    font-weight: 600;
    line-height: 20px; 
@@ -171,7 +171,7 @@ p{
 
 .loadMore{
    color: #3470FF;
-   font-family: Manrope;
+   font-family: Manrope, sans-serif;
    font-size: 16px;
    font-weight: 500;
    line-height: 24px; 

@@ -20,10 +20,10 @@ function FavoritesPage({ favoriteCars }) {
                  <h2 className={cssFavorit.h2NameModalCars}>{car.rentalPrice}</h2>
               </div>
 
-              <p className={cssFavorit.blockInfo}>          {car.address.split(',').slice(-2).join(' | ')} | {car.rentalCompany}</p>
+              <p className={cssFavorit.blockInfo}>{car.address.split(',').slice(-2).join(' | ')} | {car.rentalCompany}</p>
               <p className={cssFavorit.blockInfo}>
-                  {car.type} | {car.model} | {car.id} | {car.functionalities[0].split(' ').slice(0, 2).join(' ')}
-                  {car.functionalities[0].split(' ').length > 2 ? '...' : ''}
+                  {car.type} | {car.model} | {car.id} | {car.functionalities[0].split(' ').slice(0, 1).join(' ')}
+                  {car.functionalities[0].split(' ').length > 1 ? '...' : ''}
               </p>
             
               </div>
