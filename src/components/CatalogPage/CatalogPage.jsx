@@ -24,6 +24,7 @@ function CatalogPage() {
   const [hasMoreData, setHasMoreData] = useState(true);
   const [displayCount, setDisplayCount] = useState(8);
   const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
   const [filters, setFilters] = useState(initialFilters);
   const [filteredData, setFilteredData] = useState(JSON.parse(localStorage.getItem('filteredData')) || []);
 
@@ -72,6 +73,11 @@ function CatalogPage() {
       dispatch(addToFavorites(car));
     }
   };
+
+  const openModalInfoCar = (item) => {
+    setSelectedCar(item);
+    setIsModalInfoCarOpen(true);
+  }
 
   const closeModalInfoCar = () => {
     setIsModalInfoCarOpen(false);
