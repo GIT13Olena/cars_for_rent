@@ -1,17 +1,19 @@
 .selectMark{
-   width: 224px;
-   padding: 14px 24px 14px 18px;
+   width: 190px;
+   padding: 14px 16px 14px 14px;
    border-radius: 14px;
+   border-color: transparent;
    background: #F7F7FB;
    cursor: pointer;
 }
 
 .selectPrice {
-   width: 165px;
-   padding: 14px 27px 14px 18px;
+   width: 95px;
+   padding: 14px 17px 14px 14px;
    border-radius: 14px;
+   border-color: transparent;
    background: #F7F7FB;
-   cursor: pointer;
+   cursor: pointer; 
 }
 
 .sectionSearch{
@@ -90,15 +92,16 @@
 
 .imageContainer {
    position: relative;
-   display: inline-block;
- }
+   display: grid;
+   margin-bottom: 10px;
+}
  
- .heartIcon {
+.heartIcon {
    position: absolute;
    top: 16px;
    right: 16px;
-   width: 18px; 
-   height: 18px; 
+   width: 23px; 
+   height: 23px; 
    z-index: 1; 
 }
 

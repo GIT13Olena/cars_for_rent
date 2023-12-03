@@ -1,18 +1,32 @@
 import React  from 'react';
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import cssFavorit from './FavoritesPage.module.css'
 
-function FavoritesPage({ favoriteCars }) {
+import activeHeart from "../../icons/activeHeart.svg"
 
+import { removeFromFavorites } from '../../redux/actions/favoritesActions';
+
+const mapDispatchToProps = {
+  removeFromFavorites,
+};
+
+function FavoritesPage({ favoriteCars}) {
+  const dispatch = useDispatch();
   return (
     <div>
       {favoriteCars.length > 0 ? (
         <ul className={cssFavorit.advertisementList}>
           {favoriteCars.map((car) => (
             <li key={car.id}>
-             
-              <img src={car.img} alt="car"  className={cssFavorit.carImg}/>
+             <div className={cssFavorit.imageContainer}>
+              <img src={car.img} alt="car" className={cssFavorit.carImg}/>
 
+              <img src={activeHeart} alt="svg active heart" 
+                onClick={() => dispatch(removeFromFavorites(car))} 
+                className={cssFavorit.activeHeartIcon} 
+              />
+              </div>
               <div className={cssFavorit.infoCar}>
               <div className={cssFavorit.blockModalAndPrice}> 
                  <h2 className={cssFavorit.h2NameModalCars}>{car.make}<span className= 
@@ -48,4 +62,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(FavoritesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesPage);

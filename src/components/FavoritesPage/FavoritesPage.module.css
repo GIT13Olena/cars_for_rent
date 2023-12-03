@@ -10,6 +10,10 @@ li{
    margin-top: 50px;
 }
 
+.imageContainer{
+   position: relative;
+}
+
 .carImg{
    width: 274px;
    height: 268px;
@@ -17,6 +21,15 @@ li{
    object-fit: cover;
    object-position: center;
    margin-bottom: 14px;
+}
+
+.activeHeartIcon{
+   position: absolute;
+   top: 16px;
+   right: 16px;
+   width: 23px; 
+   height: 23px; 
+   z-index: 1; 
 }
 
 .infoCar{
@@ -66,7 +79,7 @@ li{
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 274px;
+   width: 279px;
    height: 44px;
    padding: 12px 99px;
    margin-top: 28px;
@@ -75,7 +88,7 @@ li{
    font-family: Manrope, sans-serif;
    font-size: 14px;
    font-weight: 600;
-   line-height: 20px; 
+   line-height: 20px;
    border-radius: 12px;
    background: #3470FF;
    border-color: transparent;

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import heartSvg from '../../icons/normalHeart.svg'
-import activeHeartSvg from '../../icons/activeHeart.svg'
-
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites, setFavorites } from '../../redux/actions/favoritesActions';
+
+import normalHeart from"../../icons/normalHeart.svg"
 
 import css from './CatalogPage.module.css';
 import cssModal from './Modal.module.css'
@@ -25,8 +24,6 @@ function CatalogPage() {
   const [hasMoreData, setHasMoreData] = useState(true);
   const [displayCount, setDisplayCount] = useState(8);
   const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
-  const [heartImages, setHeartImages] = useState(JSON.parse(localStorage.getItem('heartImages')) || {});
-  const [selectedCar, setSelectedCar] = useState(null);
   const [filters, setFilters] = useState(initialFilters);
   const [filteredData, setFilteredData] = useState(JSON.parse(localStorage.getItem('filteredData')) || []);
 
@@ -53,10 +50,6 @@ function CatalogPage() {
   }, [filteredData]);
 
   useEffect(() => {
-    localStorage.setItem('heartImages', JSON.stringify(heartImages));
-  }, [heartImages]);
-
-  useEffect(() => {
     const initialFavorites = JSON.parse(localStorage.getItem('favoriteCars')) || [];
     dispatch(setFavorites(initialFavorites)); 
   }, [dispatch]);
@@ -70,17 +63,15 @@ function CatalogPage() {
   };
 
   const handleFavoriteClick = (car) => {
+    console.log('handleFavoriteClick called with:', car);
     if (favoriteCars.some((favoriteCar) => favoriteCar.id === car.id)) {
+      console.log('Removing from favorites');
       dispatch(removeFromFavorites(car));
     } else {
+      console.log('Adding to favorites');
       dispatch(addToFavorites(car));
     }
-  }
-
-  const openModalInfoCar = (item) => {
-    setSelectedCar(item);
-    setIsModalInfoCarOpen(true);
-  }
+  };
 
   const closeModalInfoCar = () => {
     setIsModalInfoCarOpen(false);
@@ -105,14 +96,6 @@ function CatalogPage() {
     setFilters({
       ...filters,
       [name]: value,
-    });
-  };
-
-  const toggleHeart = (index) => {
-    setHeartImages((prevImages) => {
-      const newImages = { ...prevImages };
-      newImages[index] = prevImages[index] === activeHeartSvg ? heartSvg : activeHeartSvg;
-      return newImages;
     });
   };
 
@@ -253,16 +236,12 @@ function CatalogPage() {
         <div key={item.id} className="advertisement">
           
            <div className={css.imageContainer}>
-           <img
-                src={heartImages[index] === activeHeartSvg ? activeHeartSvg : heartSvg}
-                alt="heart"
-                className={css.heartIcon}
-                onClick={() => {
-                  toggleHeart(index);
-                  handleFavoriteClick(item);
-                }}
-              />
+           
              <img src={item.img} alt="car" className={css.imgCars} />
+
+             {!favoriteCars.some((favoriteCar) => favoriteCar.id === item.id) ? (
+              <img src={normalHeart} alt="" onClick={() => handleFavoriteClick(item)} className={css.heartIcon}/>
+            ) : null}
            </div>
             
            <div className={css.infoCar}>
