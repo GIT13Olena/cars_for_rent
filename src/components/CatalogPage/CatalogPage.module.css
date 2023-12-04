@@ -53,16 +53,18 @@
    border-color: transparent;
 }
 
+.filterCrossSvg{
+   width: 40px;
+   height: 40px;
+   margin-bottom: 5px;
+}
+
 .buttomSearch:hover{
    background: #0B44CD;
 }
 
-.forms{
-   display: flex;
-   align-items: center;
-}
-
 .formFrom{
+   width: 110px;
    padding: 14px 0px 14px 24px;
    border-radius: 14px 0px 0px 14px;
    border-right: 1px solid rgba(138, 138, 137, 0.20);
@@ -74,6 +76,7 @@
 }
 
 .formTo{
+   width: 110px;
    padding: 14px 0px 14px 24px;
    border-radius: 0px 14px 14px 0px;
    background: #F7F7FB;
@@ -92,8 +95,6 @@
 
 .imageContainer {
    position: relative;
-   display: grid;
-   margin-bottom: 10px;
 }
  
 .heartIcon {

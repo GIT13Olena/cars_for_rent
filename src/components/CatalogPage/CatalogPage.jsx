@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites, setFavorites } from '../../redux/actions/favoritesActions';
 
-import normalHeart from"../../icons/normalHeart.svg"
+import normalHeart from "../../icons/normalHeart.svg"
+import cross from "../../icons/cross-small-blue.svg"
 
 import css from './CatalogPage.module.css';
 import cssModal from './Modal.module.css'
@@ -132,7 +133,6 @@ function CatalogPage() {
     setFilteredData(filteredCars);
   };
 
-
   return (
     <>
       <div className={css.sectionSearch}>
@@ -209,10 +209,10 @@ function CatalogPage() {
         </div>
         <div className={css.blockSelect}>
             <p className={css.blockSelectMarkName}>Сar mileage / km</p>
-            <div className={css.forms}>
+            <div >
               <form onSubmit={applyFilters} >
               <input
-                type="text"
+                type="number"
                 id="mileage"
                 name="mileage"
                 className={css.formFrom}
@@ -221,7 +221,7 @@ function CatalogPage() {
                 onChange={handleFilterChange}
               />
             <input
-                type="text"
+                type="number"
                 id="km"
                 name="km"
                 className={css.formTo}
@@ -233,7 +233,7 @@ function CatalogPage() {
             </div>
         </div>
         <button className={css.buttomSearch} type="submit" onClick={applyFilters}>Search</button>
-
+        <img src={cross} alt="svg cross" className={css.filterCrossSvg}  />
       </div>
 
 
