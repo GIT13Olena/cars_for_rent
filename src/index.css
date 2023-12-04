@@ -5,11 +5,11 @@ body {
   font-family: Manrope, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   background-color: #e3f5fd;
 }
 
 code {
   font-family: Manrope, sans-serif;
-  
 }
 
 .container{
@@ -47,6 +47,7 @@ code {
 
 .menu{
   display: flex;
+  height: 77px;
   list-style: none;
   gap: 67px;
   justify-content: space-between;
@@ -67,7 +68,3 @@ code {
   cursor: pointer;
 }
 
-.logoImg{
-  width: 128px;
-  height: 100px;
-}

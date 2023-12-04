@@ -3,14 +3,15 @@ import { Link, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
 import CatalogPage from './CatalogPage/CatalogPage';
 import FavoritesPage from './FavoritesPage/FavoritesPage';
-import logo from '../img/logo.jpg'
+import car from "../icons/car.svg"
 
 function App() {
   return (
     <div className='container'>
       <nav>
         <ul className='menu'>
-         <li><img src={logo} alt="logo" className='logoImg'/></li>
+         <li>
+          <img src={car} alt="svg car"/></li>
           <li>
             <Link to="/" className='menuLink'>Home</Link>
           </li>

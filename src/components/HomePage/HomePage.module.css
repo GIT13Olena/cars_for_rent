@@ -1,6 +1,7 @@
 .blockInfoAndImg{
    display: flex;
-   justify-content: space-between;
+   justify-content: flex-end;
+   position: relative;
 }
 
 .textOrCompany{
@@ -13,16 +14,17 @@
    line-height: 30px;
    justify-content: flex-start;
    margin-left: 0px;
-   width: 60%;
-   margin-top: 165px;
+   width: 40%;
+   margin: 108px 0 0 80px;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 10;
 }
 
 .imgCars{
-   width: 400px;
-   height: 400px;
-   margin-left: 20px;
+   width: 730px;
+    height: 615px;
+    opacity: 0.6;
 }
 
-.companyImg{
-   width: 450px;
-}

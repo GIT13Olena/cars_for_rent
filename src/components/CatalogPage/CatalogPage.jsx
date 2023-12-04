@@ -233,7 +233,7 @@ function CatalogPage() {
             </div>
         </div>
         <button className={css.buttomSearch} type="submit" onClick={applyFilters}>Search</button>
-        <img src={cross} alt="svg cross" className={css.filterCrossSvg}  />
+        <img src={cross} alt="svg cross" className={css.filterCrossSvg} />
       </div>
 
 
