@@ -56,6 +56,20 @@ function CatalogPage() {
     dispatch(setFavorites(initialFavorites)); 
   }, [dispatch]);
 
+  function resetFilters() {
+    const defaultFilters = {
+      brand: '',
+      price: '',
+      mileage: '',
+      km: '',
+    };
+  
+    setFilters(defaultFilters);
+  
+    document.getElementById('brand').value = '';
+    document.getElementById('price').value = '';
+  }
+
   const handleLoadMore = () => {
     if (displayCount + 8 < (filteredData.length > 0 ? filteredData.length : data.length)) {
       setDisplayCount(displayCount + 8);
@@ -65,12 +79,9 @@ function CatalogPage() {
   };
 
   const handleFavoriteClick = (car) => {
-    console.log('handleFavoriteClick called with:', car);
     if (favoriteCars.some((favoriteCar) => favoriteCar.id === car.id)) {
-      console.log('Removing from favorites');
       dispatch(removeFromFavorites(car));
     } else {
-      console.log('Adding to favorites');
       dispatch(addToFavorites(car));
     }
   };
@@ -233,7 +244,7 @@ function CatalogPage() {
             </div>
         </div>
         <button className={css.buttomSearch} type="submit" onClick={applyFilters}>Search</button>
-        <img src={cross} alt="svg cross" className={css.filterCrossSvg} />
+        <img src={cross} alt="svg cross" className={css.filterCrossSvg} onClick={resetFilters} />
       </div>
 
 

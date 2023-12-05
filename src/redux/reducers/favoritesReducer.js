@@ -4,7 +4,6 @@ const initialState = {
 };
 
 const favoritesReducer = (state = initialState, action) => {
-  console.log('favoritesReducer called with state:', state, 'and action:', action);
   switch (action.type) {
     case 'ADD_TO_FAVORITES':
   const newCar = action.payload;
