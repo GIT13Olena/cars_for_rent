@@ -205,3 +205,10 @@ li{
 .buttomSearch:hover{
    background: #0B44CD;
 }
+
+/* media */
+
+@media screen and (max-width: 320px) {
+   
+
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import cssFavorit from './FavoritesPage.module.css';
+import cssModal from '../CatalogPage/Modal.module.css'
 
 import activeHeart from "../../icons/activeHeart.svg";
 import cross from "../../icons/cross-small-blue.svg";
@@ -23,6 +24,8 @@ function FavoritesPage({ favoriteCars, data }) {
     km: '',
   };
 
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
   const [filters, setFilters] = useState(initialFilters);
   const [filteredData, setFilteredData] = useState(favoriteCars);
 
@@ -55,6 +58,29 @@ function FavoritesPage({ favoriteCars, data }) {
     });
   };
 
+  const openModalInfoCar = (car) => {
+    setSelectedCar(car);
+    setIsModalInfoCarOpen(true);
+  }
+
+  const closeModalInfoCar = () => {
+    setIsModalInfoCarOpen(false);
+  };
+
+  const handleOnClose = e => {
+    if (e.code === 'Escape') {
+      closeModalInfoCar();
+    }
+  };
+
+  window.addEventListener('keydown', handleOnClose);
+
+  const handleOverlyClick = e => {
+    if (e.currentTarget === e.target) {
+      closeModalInfoCar();
+    }
+  };
+
   const applyFilters = (e) => {
     e.preventDefault();
     let filteredCars = [...favoriteCars];
@@ -83,6 +109,7 @@ function FavoritesPage({ favoriteCars, data }) {
   };
 
    return (
+    <>
     <div className={cssFavorit.carAndSidebar}>
       <div>
         {filteredData.length > 0 ? (
@@ -111,7 +138,7 @@ function FavoritesPage({ favoriteCars, data }) {
                     {car.functionalities[0].split(' ').length > 1 ? '...' : ''}
                   </p>
                 </div>
-                <button className={cssFavorit.LearnMore}>Learn more</button>
+                <button onClick={() => openModalInfoCar(car)} className={cssFavorit.LearnMore}>Learn more</button>
               </li>
             ))}
           </ul>
@@ -228,6 +255,51 @@ function FavoritesPage({ favoriteCars, data }) {
         
       </div>
     </div>
+
+{isModalInfoCarOpen && selectedCar && (
+
+  <div className={cssModal.modalOverly} onClick={handleOverlyClick}>
+
+    <div className={cssModal.modalContent}>
+     <button onClick={closeModalInfoCar} className={cssModal.closeModalBtn}>&#10006;</button> 
+     <img src={selectedCar.img} alt="car" className={cssModal.imgCars} />
+    <div className={cssModal.blockInfoCar}>
+
+    <div className={cssModal.nameCarAndInfo}>
+      <h2 className={cssModal.h2NameModalCars}>{selectedCar.make} <span className={cssModal.nameModal}>{selectedCar.model}</span>, {selectedCar.year}</h2>
+      <p className={cssModal.blockInfo}>{selectedCar.address.split(',').slice(-2).join(' | ')} | Id: {selectedCar.id} | Year: {selectedCar.year} | Type: {selectedCar.type} </p>
+      <p className={cssModal.blockInfo}>Fuel Consumption: {selectedCar.fuelConsumption} | Engine Size: {selectedCar.engineSize}</p>
+    </div>
+   
+     <p className={cssModal.description}>{selectedCar.description}</p>
+    </div>
+
+    <div className={cssModal.blockAccessoriesInfo}>
+     <p className={cssModal.accessories}>Accessories and functionalities:</p>
+     <p className={cssModal.blockInfo}>{selectedCar.accessories[0]} | {selectedCar.accessories[1]} | {selectedCar.accessories[2]}</p>
+     <p className={cssModal.blockInfo}>{selectedCar.functionalities[0]} | {selectedCar.functionalities[1]} | {selectedCar.functionalities[2]}</p>
+    </div>
+     
+     <div className={cssModal.allBlockReantalConditions}>
+       <p className={cssModal.rentalConditions}>Rental Conditions: </p>
+
+       <div className={cssModal.blockRentalConditions}>
+         {selectedCar.rentalConditions.split('\n').map((item, index) => (
+         <p key={index} className={cssModal.textInfoRental}>{item} </p>
+          ))
+         }
+         <p className={cssModal.textInfoRental}>Mileage: <span className={cssModal.infoIteam}>{selectedCar.mileage}</span></p>
+         <p className={cssModal.textInfoRental}>Price: <span className={cssModal.infoIteam}>{selectedCar.rentalPrice}</span></p>
+       </div>
+
+     </div>
+     
+      <a href="tel:+380730000000"><button className={cssModal.buttonRenalCar}>Rental car</button></a>
+      
+   </div>
+  </div>
+)}
+</>
   );
 }
 
