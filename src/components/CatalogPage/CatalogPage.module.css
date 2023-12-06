@@ -1,20 +1,4 @@
-.selectMark{
-   width: 190px;
-   padding: 14px 16px 14px 14px;
-   border-radius: 14px;
-   border-color: transparent;
-   background: #F7F7FB;
-   cursor: pointer;
-}
-
-.selectPrice {
-   width: 95px;
-   padding: 14px 17px 14px 14px;
-   border-radius: 14px;
-   border-color: transparent;
-   background: #F7F7FB;
-   cursor: pointer; 
-}
+/* filter */
 
 .sectionSearch{
    display: flex;
@@ -37,6 +21,47 @@
    font-size: 14px;
    font-weight: 500;
    line-height: 18px;
+}
+
+
+.selectMark{
+   width: 190px;
+   padding: 14px 16px 14px 14px;
+   border-radius: 14px;
+   border-color: transparent;
+   background: #F7F7FB;
+   cursor: pointer;
+}
+
+.selectPrice {
+   width: 95px;
+   padding: 14px 17px 14px 14px;
+   border-radius: 14px;
+   border-color: transparent;
+   background: #F7F7FB;
+   cursor: pointer; 
+}
+
+.formFrom{
+   width: 110px;
+   padding: 14px 0px 14px 24px;
+   border-radius: 14px 0px 0px 14px;
+   border-right: 1px solid rgba(138, 138, 137, 0.20);
+   background: #F7F7FB;
+   border-top-color: transparent;
+   border-left-color: transparent ;
+   border-bottom-color: transparent ;
+   cursor: pointer;
+}
+
+.formTo{
+   width: 110px;
+   padding: 14px 0px 14px 24px;
+   border-radius: 0px 14px 14px 0px;
+   background: #F7F7FB;
+   color: #121417;
+   border-color: transparent;
+   cursor: pointer;
 }
 
 .buttomSearch{
@@ -63,27 +88,7 @@
    background: #0B44CD;
 }
 
-.formFrom{
-   width: 110px;
-   padding: 14px 0px 14px 24px;
-   border-radius: 14px 0px 0px 14px;
-   border-right: 1px solid rgba(138, 138, 137, 0.20);
-   background: #F7F7FB;
-   border-top-color: transparent;
-   border-left-color: transparent ;
-   border-bottom-color: transparent ;
-   cursor: pointer;
-}
-
-.formTo{
-   width: 110px;
-   padding: 14px 0px 14px 24px;
-   border-radius: 0px 14px 14px 0px;
-   background: #F7F7FB;
-   color: #121417;
-   border-color: transparent;
-   cursor: pointer;
-}
+/* car */
 
 .advertisementList{
    display: flex;

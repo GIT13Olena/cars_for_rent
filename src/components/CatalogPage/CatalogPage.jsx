@@ -218,6 +218,8 @@ function CatalogPage() {
               <option value="$500">500$</option>
             </select>
         </div>
+
+
         <div className={css.blockSelect}>
             <p className={css.blockSelectMarkName}>Сar mileage / km</p>
             <div >
@@ -231,6 +233,7 @@ function CatalogPage() {
                 value={filters.mileage}
                 onChange={handleFilterChange}
               />
+              
             <input
                 type="number"
                 id="km"

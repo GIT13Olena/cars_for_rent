@@ -2,12 +2,18 @@ li{
    list-style: none;
 }
 
+.carAndSidebar{
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+
 .advertisementList{
    display: flex;
    flex-wrap: wrap;
    column-gap: 2%;
-   justify-content: center;
    margin-top: 50px;
+   width: 100%;
 }
 
 .imageContainer{
@@ -96,5 +102,106 @@ li{
 }
 
 .LearnMore:hover{
+   background: #0B44CD;
+}
+
+/* filter */
+
+.sectionSearch{
+   width: 310px;
+   margin: 40px;
+}
+
+.brandAndPrice{
+   display: flex;
+   margin-bottom: 18px;
+}
+
+.blockSelect{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 8px;
+   width: 280px;
+}
+
+.blockSelectMarkName{
+   color: #8A8A89;
+   font-family: Manrope, sans-serif;
+   font-size: 14px;
+   font-weight: 500;
+   line-height: 18px;
+}
+
+
+.selectMark{
+   width: 190px;
+   padding: 14px 16px 14px 14px;
+   border-radius: 14px;
+   border-color: transparent;
+   background: #F7F7FB;
+   cursor: pointer;
+}
+
+.selectPrice {
+   width: 95px;
+   padding: 14px 17px 14px 14px;
+   margin-left: 10px;
+   border-radius: 14px;
+   border-color: transparent;
+   background: #F7F7FB;
+   cursor: pointer; 
+}
+
+.formFrom{
+   width: 110px;
+   padding: 14px 0px 14px 24px;
+   border-radius: 14px 0px 0px 14px;
+   border-right: 1px solid rgba(138, 138, 137, 0.20);
+   background: #F7F7FB;
+   border-top-color: transparent;
+   border-left-color: transparent ;
+   border-bottom-color: transparent ;
+   cursor: pointer;
+}
+
+.formTo{
+   width: 110px;
+   padding: 14px 0px 14px 24px;
+   border-radius: 0px 14px 14px 0px;
+   background: #F7F7FB;
+   color: #121417;
+   border-color: transparent;
+   cursor: pointer;
+}
+
+.btnSearchRemoveSvg{
+   display: flex;
+   margin-top: 18px;
+   align-items: center;
+}
+
+.buttomSearch{
+   color: var(--White, #FFF);
+   font-family: Manrope, sans-serif;
+   font-size: 14px;
+   font-weight: 600;
+   line-height: 20px;
+   cursor: pointer;
+
+   padding: 14px 44px;
+   margin-right: 10px;
+   border-radius: 12px;
+   background: #3470FF;
+   border-color: transparent;
+}
+
+.filterCrossSvg{
+   width: 40px;
+   height: 40px;
+   margin-bottom: 5px;
+}
+
+.buttomSearch:hover{
    background: #0B44CD;
 }
