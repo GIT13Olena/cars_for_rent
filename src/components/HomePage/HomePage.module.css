@@ -13,9 +13,8 @@
    display: flex;
    line-height: 30px;
    justify-content: flex-start;
-   margin-left: 0px;
-   width: 40%;
-   margin: 108px 0 0 80px;
+   width: 90%;
+   margin: 0;
    position: absolute;
    top: 0;
    left: 0;
@@ -23,8 +22,29 @@
 }
 
 .imgCars{
-   width: 730px;
-    height: 615px;
+   width: 100%;
     opacity: 0.6;
 }
 
+@media screen and (max-width: 320px) {
+   .textOrCompany{
+      text-decoration: none;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      display: flex;
+      line-height: 30px;
+      justify-content: flex-start;
+      width: 90%;
+      padding: 2px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+   }
+   .imgCars{
+      width: 100%;
+      opacity: 0.6;
+   }
+ }

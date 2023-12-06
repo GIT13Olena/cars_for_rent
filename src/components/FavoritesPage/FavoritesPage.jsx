@@ -28,6 +28,7 @@ function FavoritesPage({ favoriteCars, data }) {
   const [isModalInfoCarOpen, setIsModalInfoCarOpen] = useState(false);
   const [filters, setFilters] = useState(initialFilters);
   const [filteredData, setFilteredData] = useState(favoriteCars);
+  const [noCarsMessage, setNoCarsMessage] = useState('');
 
   useEffect(() => {
     localStorage.setItem('favoritesFilters', JSON.stringify(filters));
@@ -105,50 +106,28 @@ function FavoritesPage({ favoriteCars, data }) {
       );
     }
 
-    setFilteredData(filteredCars);
+    if (filteredCars.length === 0) {
+      setNoCarsMessage('No cars match the selected filters.')
+      
+      setTimeout(() => {
+        setNoCarsMessage('');
+      }, 3000);
+    } else {
+      setFilteredData(filteredCars);
+    }
   };
 
    return (
     <>
+
+{favoriteCars.length === 0 && (
+    <p className={cssFavorit.messNoFavCars}>No favorite cars added yet.</p>
+)}
+
     <div className={cssFavorit.carAndSidebar}>
-      <div>
-        {filteredData.length > 0 ? (
-          <ul className={cssFavorit.advertisementList}>
-            {filteredData.map((car) => (
-              <li key={car.id}>
-                <div className={cssFavorit.imageContainer}>
-                  <img src={car.img} alt="car" className={cssFavorit.carImg}/>
-                  <img src={activeHeart} alt="svg active heart" 
-                    onClick={() => dispatch(removeFromFavorites(car))} 
-                    className={cssFavorit.activeHeartIcon} 
-                  />
-                </div>
-                <div className={cssFavorit.infoCar}>
-                  <div className={cssFavorit.blockModalAndPrice}> 
-                    <h2 className={cssFavorit.h2NameModalCars}>
-                      {car.make}<span className={cssFavorit.nameModal}>{car.model}</span>, {car.year}
-                    </h2>
-                    <h2 className={cssFavorit.h2NameModalCars}>{car.rentalPrice}</h2>
-                  </div>
-                  <p className={cssFavorit.blockInfo}>
-                    {car.address.split(',').slice(-2).join(' | ')} | {car.rentalCompany}
-                  </p>
-                  <p className={cssFavorit.blockInfo}>
-                    {car.type} | {car.model} | {car.id} | {car.functionalities[0].split(' ').slice(0, 1).join(' ')}
-                    {car.functionalities[0].split(' ').length > 1 ? '...' : ''}
-                  </p>
-                </div>
-                <button onClick={() => openModalInfoCar(car)} className={cssFavorit.LearnMore}>Learn more</button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>
-            Your favorite cars are not yet on the list. Like the car with 
-            a heart and it will appear here?
-          </p>
-        )}
-      </div>
+
+
+<div>
     <div className={cssFavorit.sectionSearch}>
       <div className={cssFavorit.brandAndPrice}>
         <div className={cssFavorit.blockSelect}>
@@ -254,6 +233,39 @@ function FavoritesPage({ favoriteCars, data }) {
         </div>
         
       </div>
+      <p className={cssFavorit.messageFilters}>{noCarsMessage}</p>
+      </div>
+
+          <ul className={cssFavorit.advertisementList}>
+            {filteredData.map((car) => (
+              <li key={car.id}>
+                <div className={cssFavorit.imageContainer}>
+                  <img src={car.img} alt="car" className={cssFavorit.carImg}/>
+                  <img src={activeHeart} alt="svg active heart" 
+                    onClick={() => dispatch(removeFromFavorites(car))} 
+                    className={cssFavorit.activeHeartIcon} 
+                  />
+                </div>
+                <div className={cssFavorit.infoCar}>
+                  <div className={cssFavorit.blockModalAndPrice}> 
+                    <h2 className={cssFavorit.h2NameModalCars}>
+                      {car.make}<span className={cssFavorit.nameModal}>{car.model}</span>, {car.year}
+                    </h2>
+                    <h2 className={cssFavorit.h2NameModalCars}>{car.rentalPrice}</h2>
+                  </div>
+                  <p className={cssFavorit.blockInfo}>
+                    {car.address.split(',').slice(-2).join(' | ')} | {car.rentalCompany}
+                  </p>
+                  <p className={cssFavorit.blockInfo}>
+                    {car.type} | {car.model} | {car.id} | {car.functionalities[0].split(' ').slice(0, 1).join(' ')}
+                    {car.functionalities[0].split(' ').length > 1 ? '...' : ''}
+                  </p>
+                </div>
+                <button onClick={() => openModalInfoCar(car)} className={cssFavorit.LearnMore}>Learn more</button>
+              </li>
+            ))}
+          </ul>
+
     </div>
 
 {isModalInfoCarOpen && selectedCar && (

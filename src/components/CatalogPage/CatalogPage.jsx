@@ -28,6 +28,7 @@ function CatalogPage() {
   const [selectedCar, setSelectedCar] = useState(null);
   const [filters, setFilters] = useState(initialFilters);
   const [filteredData, setFilteredData] = useState(JSON.parse(localStorage.getItem('filteredData')) || []);
+  const [noCarsMessage, setNoCarsMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,19 +121,19 @@ function CatalogPage() {
   const applyFilters = (e) => {
     e.preventDefault();
     let filteredCars = [...data];
-
+  
     if (filters.brand) {
       filteredCars = filteredCars.filter(
         (car) => car.make.toLowerCase() === filters.brand.toLowerCase()
       );
     }
-
+  
     if (filters.price) {
       filteredCars = filteredCars.filter(
         (car) => car.rentalPrice.toLowerCase() === filters.price.toLowerCase()
       );
     }
-
+  
     if (filters.mileage && filters.km) {
       const fromMileage = Number(filters.mileage);
       const toMileage = Number(filters.km);
@@ -142,11 +143,22 @@ function CatalogPage() {
     }
 
     setFilteredData(filteredCars);
+
+    if (filteredCars.length === 0) {
+      setNoCarsMessage('No cars match the selected filters.');
+      
+      setTimeout(() => {
+        setNoCarsMessage('');
+      }, 3000);
+    }
+
   };
 
   return (
     <>
+    <div className={css.filters}>
       <div className={css.sectionSearch}>
+        <div className={css.brandAndPrice}>
         <div className={css.blockSelect}>
           <p className={css.blockSelectMarkName}>Car brand</p>
           <select 
@@ -218,40 +230,43 @@ function CatalogPage() {
               <option value="$500">500$</option>
             </select>
         </div>
-
-
-        <div className={css.blockSelect}>
-            <p className={css.blockSelectMarkName}>Сar mileage / km</p>
-            <div >
-              <form onSubmit={applyFilters} >
-              <input
-                type="number"
-                id="mileage"
-                name="mileage"
-                className={css.formFrom}
-                placeholder="From:"
-                value={filters.mileage}
-                onChange={handleFilterChange}
-              />
-              
-            <input
-                type="number"
-                id="km"
-                name="km"
-                className={css.formTo}
-                placeholder="To:"
-                value={filters.km}
-                onChange={handleFilterChange}
-              />
-            </form>
-            </div>
         </div>
-        <button className={css.buttomSearch} type="submit" onClick={applyFilters}>Search</button>
-        <img src={cross} alt="svg cross" className={css.filterCrossSvg} onClick={resetFilters} />
+          <div className={css.blockSelect}>
+                    <p className={css.blockSelectMarkName}>Сar mileage / km</p>
+                    <div >
+                      <form onSubmit={applyFilters} >
+                      <input
+                        type="number"
+                        id="mileage"
+                        name="mileage"
+                        className={css.formFrom}
+                        placeholder="From:"
+                        value={filters.mileage}
+                        onChange={handleFilterChange}
+                      />
+                      
+                    <input
+                        type="number"
+                        id="km"
+                        name="km"
+                        className={css.formTo}
+                        placeholder="To:"
+                        value={filters.km}
+                        onChange={handleFilterChange}
+                      />
+                    </form>
+                    </div>
+                </div>
+                <div className={css.btnSearchRemoveSvg}>
+                <button className={css.buttomSearch} type="submit" onClick={applyFilters}>Search</button>
+                <img src={cross} alt="svg cross" className={css.filterCrossSvg} onClick={resetFilters} />
+                </div>
       </div>
-
-
+    </div>
+    
+<p className={css.messageFilters}>{noCarsMessage}</p>
       <div className={css.advertisementList}>
+        
       {(filteredData.length > 0 ? filteredData : data).slice(0, displayCount).map((item, index) => (
         <div key={item.id} className="advertisement">
           

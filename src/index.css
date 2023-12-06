@@ -32,6 +32,10 @@ code {
     padding-left: 27px;
     padding-right: 27px;
   }
+
+  .svgCar{
+    width: 85px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -41,8 +45,12 @@ code {
     padding-right: 10px;
     margin-left: auto;
     margin-right: auto;
-
   }
+
+  .svgCar{
+    width: 55px;
+  }
+  
 }
 
 .menu{

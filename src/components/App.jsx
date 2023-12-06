@@ -11,7 +11,7 @@ function App() {
       <nav>
         <ul className='menu'>
          <li>
-          <img src={car} alt="svg car"/></li>
+          <img src={car} alt="svg car" className='svgCar'/></li>
           <li>
             <Link to="/" className='menuLink'>Home</Link>
           </li>
