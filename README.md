@@ -22,7 +22,7 @@ In the project directory, you can run:
 
 # ProductList
 
-#To run the project locally, you need the following commands in the terminal
+##To run the project locally, you need the following commands in the terminal
 
 The first command to install node modules
 ## `npm i ` or `npm install`
@@ -34,7 +34,7 @@ A project that implements the display of products from the mockApi database serv
 
 Each detailed information about the product opens in a new window in full, saving via local storage is implemented, and a rubber layout for all devices is made, a beautiful and minimalistic stylization is made, and the project was written clearly according to the requirements of the technical task.
 
-#Here are the screenshots to preview the project
+##Here are the screenshots to preview the project
 
 Home page with products
 ![image](https://github.com/GIT13Olena/cars_for_rent/assets/118273931/42fbdb6a-959f-4304-b5b4-8d1711e881bc)
