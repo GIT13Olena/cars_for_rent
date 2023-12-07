@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites, setFavorites } from '../../redux/actions/favoritesActions';
 
-import normalHeart from "../../icons/normalHeart.svg"
+import normalHeart from "../../icons/heart-red-normal.svg"
 import cross from "../../icons/cross-small-blue.svg"
 
 import css from './CatalogPage.module.css';
