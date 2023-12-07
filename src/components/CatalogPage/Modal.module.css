@@ -11,14 +11,13 @@
 .modalContent {
    background-color: #fff;
    width: 541px;
-   height: 800px;
-   margin: 10px auto;
+   height: 85%;
+   margin: 50px auto;
    text-align: center;
    position: relative; 
    border-radius: 10px;
    box-shadow: 0px 4px 14px 0px black;
-   overflow-y: scroll;
-   max-height: 100%;
+   overflow-y: auto;
  }
 
  .closeModalBtn {
@@ -188,4 +187,102 @@
 .buttonRenalCar:hover{
   background: #0B44CD;
   cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+  .modalContent{
+    background-color: #fff;
+    width: 320px;
+    height: 85%;
+    margin: 25px auto;
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 4px 14px 0px black;
+    overflow-y: scroll;
+  }
+
+.imgCars{
+  width: 261px;
+  height: 148px;
+  border-radius: 14px;
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+
+.nameCarAndInfo {
+  display: flex;
+  width: 260px;
+  height: 72px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.blockInfoCar {
+  display: flex;
+  width: 260px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  margin-left: 40px;
+}
+
+.description {
+  color: #121417;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  width: 260px;
+  text-align: start;
+  margin-bottom: 15px;
+}
+
+.blockAccessoriesInfo{
+  display: flex;
+  width: 260px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-left: 40px;
+  margin-bottom: 15px;
+}
+
+.blockRentalConditions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 8px;
+  width: 260px;
+  height: 3px;
+}
+
+.allBlockReantalConditions {
+  display: flex;
+  width: 260px;
+  height: 100px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 40px;
+  margin-bottom: 24px;
+}
+
+.buttonRenalCar {
+  color: var(--White, #FFF);
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 12px 50px;
+  border-radius: 12px;
+  background: #3470FF;
+  border-color: transparent;
+  position: absolute;
+  left: 40px;
+  margin-top: 40px;
+}
+
 }
