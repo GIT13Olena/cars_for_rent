@@ -1,42 +1,42 @@
 .modalOverly {
-   height: 100%;
-   left: 0;
-   position: fixed;
-   top: 0;
-   width: 100%;
-   z-index: 9999;
-   background: rgba(18, 20, 23, 0.50);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(18, 20, 23, 0.5);
 }
 
 .modalContent {
-   background-color: #fff;
-   width: 541px;
-   height: 85%;
-   margin: 50px auto;
-   text-align: center;
-   position: relative; 
-   border-radius: 10px;
-   box-shadow: 0px 4px 14px 0px black;
-   overflow-y: auto;
- }
+  background-color: #fff;
+  width: 541px;
+  height: 85%;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0px 4px 14px 0px black;
+  overflow-y: auto;
+}
 
- .closeModalBtn {
-   position: absolute;
-   top: 10px;
-   right: 10px;
-   font-size: 24px;
-   background: none;
-   border: none;
-   cursor: pointer;
-   color: #333;
- }
- 
-.img-cars{
+.closeModalBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.img-cars {
   width: 469px;
   height: 314px;
 }
 
-.imgCars{
+.imgCars {
   width: 461px;
   height: 248px;
   border-radius: 14px;
@@ -44,7 +44,7 @@
   margin-bottom: 14px;
 }
 
-.blockInfoCar{
+.blockInfoCar {
   display: flex;
   width: 461px;
   flex-direction: column;
@@ -53,16 +53,16 @@
   margin-left: 40px;
 }
 
-.nameCarAndInfo{
+.nameCarAndInfo {
   display: flex;
-  width: 300px;
+  width: 100%;
   height: 72px;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
 }
 
-.h2NameModalCars{
+.h2NameModalCars {
   color: #121417;
   font-family: Manrope, sans-serif;
   font-size: 18px;
@@ -71,16 +71,16 @@
   margin: 0px;
 }
 
-.nameModal{
-  color: #3470FF;
+.nameModal {
+  color: #3470ff;
   font-family: Manrope, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
 }
 
-.blockInfo{
-  color: rgba(18, 20, 23, 0.50);
+.blockInfo {
+  color: rgba(18, 20, 23, 0.5);
   font-family: Manrope, sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -88,7 +88,7 @@
   text-align: start;
 }
 
-.description{
+.description {
   color: #121417;
   font-family: Manrope, sans-serif;
   font-size: 14px;
@@ -99,7 +99,7 @@
   margin-bottom: 15px;
 }
 
-.blockAccessoriesInfo{
+.blockAccessoriesInfo {
   display: flex;
   width: 461px;
   flex-direction: column;
@@ -109,7 +109,7 @@
   margin-bottom: 15px;
 }
 
-.accessories{
+.accessories {
   text-align: start;
   color: #121417;
   font-family: Manrope, sans-serif;
@@ -118,7 +118,7 @@
   line-height: 20px;
 }
 
-.allBlockReantalConditions{
+.allBlockReantalConditions {
   display: flex;
   width: 461px;
   height: 100px;
@@ -130,25 +130,24 @@
   margin-bottom: 24px;
 }
 
-.rentalConditions{
+.rentalConditions {
   color: #121417;
   font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  line-height: 20px; 
+  line-height: 20px;
 }
 
-.blockRentalConditions{
+.blockRentalConditions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   gap: 8px;
   width: 461px;
   height: 72px;
-  
 }
 
-.textInfoRental{
+.textInfoRental {
   color: #363535;
   font-family: Montserrat;
   font-size: 12px;
@@ -157,11 +156,11 @@
   letter-spacing: -0.24px;
   padding: 7px 14px;
   border-radius: 35px;
-  background: #F9F9F9;
+  background: #f9f9f9;
 }
 
-.infoIteam{
-  color: #3470FF;
+.infoIteam {
+  color: #3470ff;
   font-family: Montserrat;
   font-size: 12px;
   font-weight: 600;
@@ -169,28 +168,28 @@
   letter-spacing: -0.24px;
 }
 
-.buttonRenalCar{
-  color: var(--White, #FFF);
+.buttonRenalCar {
+  color: var(--White, #fff);
   font-family: Manrope, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
   padding: 12px 50px;
   border-radius: 12px;
-  background: #3470FF;
+  background: #3470ff;
   border-color: transparent;
   position: absolute;
   left: 40px;
   margin-top: 10px;
 }
 
-.buttonRenalCar:hover{
-  background: #0B44CD;
+.buttonRenalCar:hover {
+  background: #0b44cd;
   cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {
-  .modalContent{
+  .modalContent {
     background-color: #fff;
     width: 320px;
     height: 85%;
@@ -202,87 +201,86 @@
     overflow-y: scroll;
   }
 
-.imgCars{
-  width: 261px;
-  height: 148px;
-  border-radius: 14px;
-  margin-top: 40px;
-  margin-bottom: 14px;
-}
+  .imgCars {
+    width: 261px;
+    height: 148px;
+    border-radius: 14px;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
 
-.nameCarAndInfo {
-  display: flex;
-  width: 260px;
-  height: 72px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
+  .nameCarAndInfo {
+    display: flex;
+    width: 260px;
+    height: 72px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 
-.blockInfoCar {
-  display: flex;
-  width: 260px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
-  margin-left: 40px;
-}
+  .blockInfoCar {
+    display: flex;
+    width: 260px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    margin-left: 40px;
+  }
 
-.description {
-  color: #121417;
-  font-family: Manrope, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  width: 260px;
-  text-align: start;
-  margin-bottom: 15px;
-}
+  .description {
+    color: #121417;
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 260px;
+    text-align: start;
+    margin-bottom: 15px;
+  }
 
-.blockAccessoriesInfo{
-  display: flex;
-  width: 260px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  margin-left: 40px;
-  margin-bottom: 15px;
-}
+  .blockAccessoriesInfo {
+    display: flex;
+    width: 260px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+  }
 
-.blockRentalConditions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: auto;
-  gap: 8px;
-  width: 260px;
-  height: 3px;
-}
+  .blockRentalConditions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 8px;
+    width: 260px;
+    height: 3px;
+  }
 
-.allBlockReantalConditions {
-  display: flex;
-  width: 260px;
-  height: 100px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  flex-shrink: 0;
-  margin-left: 40px;
-  margin-bottom: 24px;
-}
+  .allBlockReantalConditions {
+    display: flex;
+    width: 260px;
+    height: 100px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: 40px;
+    margin-bottom: 24px;
+  }
 
-.buttonRenalCar {
-  color: var(--White, #FFF);
-  font-family: Manrope, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 12px 50px;
-  border-radius: 12px;
-  background: #3470FF;
-  border-color: transparent;
-  position: absolute;
-  left: 40px;
-  margin-top: 40px;
-}
-
+  .buttonRenalCar {
+    color: var(--White, #fff);
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 12px 50px;
+    border-radius: 12px;
+    background: #3470ff;
+    border-color: transparent;
+    position: absolute;
+    left: 40px;
+    margin-top: 40px;
+  }
 }
